@@ -1,47 +1,41 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata: 
-  name: auth-depl
+  name: movie-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: auth
+      app: movie
   template:
     metadata:
       labels:
-        app: auth
+        app: movie
     spec:
       containers:
-        - name: auth
-          image: tionguyen97/auth
+        - name: movie
+          image: tionguyen97/movie
           env:
-            - name: JWT_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: jwt-key
-                  key: JWT_KEY
-            - name: JWT_EXPIRES
-              valueFrom:
-                secretKeyRef:
-                  name: jwt-expires
-                  key: JWT_EXPIRES
             - name: MYSQL_URL
               valueFrom:
                 secretKeyRef:
                   name: mysql-url
                   key: MYSQL_URL
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: auth-srv
+  name: movie-srv
 spec:
   type: ClusterIP
   selector:
-    app: auth
+    app: movie
   ports:
-    - name: auth
+    - name: movie
       protocol: TCP
       port: 5000
       targetPort: 5000

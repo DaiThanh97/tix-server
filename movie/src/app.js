@@ -1,13 +1,14 @@
+require('dotenv').config();
 const express = require('express');
 const { errorHandler } = require('@tiotix/common');
 
-const authRoute = require('./routes/auth.route');
+const movieRoute = require('./routes/movie.route');
 
 const app = express();
 
 app.use(express.json());
 
-app.use('/api/auth', authRoute);
+app.use('/api/movie', movieRoute);
 
 app.use(errorHandler);
 

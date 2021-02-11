@@ -1,5 +1,5 @@
 {
-  "name": "auth",
+  "name": "movie",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
@@ -21,9 +21,8 @@
     "@tiotix/common": "^1.0.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "express-validator": "^6.9.2",
-    "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.2.5",
+    "node-nats-streaming": "^0.3.2",
     "nodemon": "^2.0.7",
     "sequelize": "^6.5.0"
   },

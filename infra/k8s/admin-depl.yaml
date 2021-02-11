@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata: 
-  name: auth-depl
+  name: admin-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: auth
+      app: admin
   template:
     metadata:
       labels:
-        app: auth
+        app: admin
     spec:
       containers:
-        - name: auth
-          image: tionguyen97/auth
+        - name: admin
+          image: tionguyen97/admin
           env:
             - name: JWT_KEY
               valueFrom:
@@ -31,17 +31,21 @@ spec:
                 secretKeyRef:
                   name: mysql-url
                   key: MYSQL_URL
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: auth-srv
+  name: admin-srv
 spec:
   type: ClusterIP
   selector:
-    app: auth
+    app: admin
   ports:
-    - name: auth
+    - name: admin
       protocol: TCP
       port: 5000
       targetPort: 5000
