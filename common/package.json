@@ -1,0 +1,16 @@
+{
+  "name": "@tiotix/common",
+  "version": "1.0.3",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "publish": "git add . && git commit -m \"Update\" && npm version patch && npm publish"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express-validator": "^6.9.2",
+    "jsonwebtoken": "^8.5.1"
+  }
+}
