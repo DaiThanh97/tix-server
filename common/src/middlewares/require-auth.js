@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const { STATUS_CODE } = require('../constants');
+const { HTTP_CODE } = require('../constants');
 
 module.exports = (req, res, next) => {
     try {
@@ -13,7 +13,7 @@ module.exports = (req, res, next) => {
         req.user = payload;
         next();
     } catch (err) {
-        err.status = STATUS_CODE.UNAUTHENTICATED;
+        err.httpCode = HTTP_CODE.UNAUTHENTICATED;
         err.message = 'Not authenticated!';
         next(err);
     }
