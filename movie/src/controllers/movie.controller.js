@@ -6,6 +6,7 @@ const {
 } = require('@tiotix/common');
 
 const movieService = require('./../services/movie.service');
+const { API_ACTION } = require('./../configs/api-action');
 
 // @DESC    GET LIST MOVIE
 // @ROUTE   /api/movie/getMovies
@@ -19,10 +20,10 @@ exports.getMovies = asyncHandler(async (req, res, next) => {
     if (result[0]) {
         const data = Object.values(result[0]);
         httpCode = HTTP_CODE.CREATED;
-        response = new Response('Get movies successful', data);
+        response = new Response(`${API_ACTION.GET_ALL_MOVIES} successful`, data);
     }
     else {
-        throw new CustomError(HTTP_CODE.INTERNAL_ERROR, 'DB response error');
+        throw new CustomError(HTTP_CODE.INTERNAL_ERROR, `${API_ACTION.GET_ALL_MOVIES} DB response error`);
     }
 
     // Response

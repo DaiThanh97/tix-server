@@ -1,7 +1,7 @@
 const app = require('./app');
 const db = require('./configs/database');
 const natsWrapper = require('./nats-wrapper');
-const { MovieCreatedListener } = require('./events/listeners/movie.listener');
+const { MovieCreatedListener, MovieUpdatedListener, MovieDeletedListener } = require('./events/listeners/movie.listener');
 
 const start = async () => {
     try {
@@ -21,6 +21,8 @@ const start = async () => {
 
         // Listener NATS
         new MovieCreatedListener(natsWrapper.getClient()).listen();
+        new MovieUpdatedListener(natsWrapper.getClient()).listen();
+        new MovieDeletedListener(natsWrapper.getClient()).listen();
 
         // Connect DB
         await db.authenticate();

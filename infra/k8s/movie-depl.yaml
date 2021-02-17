@@ -25,6 +25,26 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.name
+            - name: NATS_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: tix
+                  key: NATS_URL
+            - name: NATS_CLUSTER_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: tix
+                  key: NATS_CLUSTER_ID
+            - name: QUEUE_GROUP_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: tix
+                  key: QUEUE_GROUP_MOVIE
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: tix
+                  key: DB_MOVIE
 ---
 apiVersion: v1
 kind: Service

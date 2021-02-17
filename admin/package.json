@@ -18,7 +18,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@tiotix/common": "^1.0.4",
+    "@tiotix/common": "^1.0.5",
+    "aws-sdk": "^2.844.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-validator": "^6.9.2",
@@ -27,7 +28,8 @@
     "node-nats-streaming": "^0.3.2",
     "nodemon": "^2.0.7",
     "sequelize": "^6.5.0",
-    "slugify": "^1.4.6"
+    "slugify": "^1.4.6",
+    "uuidv4": "^6.2.6"
   },
   "devDependencies": {
     "jest": "^26.6.3",

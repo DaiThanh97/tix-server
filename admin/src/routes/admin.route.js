@@ -14,11 +14,31 @@ router.post(
 );
 
 router.post(
-    '/addMovie',
+    '/movie',
     requireAuth,
     validate.addMovie,
     validateRequest,
     adminController.addMovie
-);
+)
+
+router.get(
+    '/movie/upload',
+    requireAuth,
+    adminController.getPresignURL
+)
+
+router.route('/movie/:id')
+    .put(
+        requireAuth,
+        validate.updateMovie,
+        validateRequest,
+        adminController.updateMovie
+    )
+    .delete(
+        requireAuth,
+        validate.deleteMovie,
+        validateRequest,
+        adminController.deleteMovie
+    )
 
 module.exports = router;

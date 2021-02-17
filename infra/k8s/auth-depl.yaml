@@ -31,6 +31,8 @@ spec:
                 secretKeyRef:
                   name: mysql-url
                   key: MYSQL_URL
+            - name: DB_NAME
+              value: db_user
 ---
 apiVersion: v1
 kind: Service
