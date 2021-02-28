@@ -1,6 +1,6 @@
 const nats = require('node-nats-streaming');
 
-const adminService = require('./services/admin.service');
+const eventService = require('./services/event.service');
 
 class NatsWrapper {
     constructor() {
@@ -15,7 +15,7 @@ class NatsWrapper {
     }
 
     async handleAllEventNotPublished() {
-        const result = await adminService.spAdminGetEvent();
+        const result = await eventService.spAdminGetEvent();
         if (result[0]) {
             const listEvent = Object.values(result[0]);
             for (let child of listEvent) {
@@ -23,7 +23,7 @@ class NatsWrapper {
                     if (err) {
                         return;
                     }
-                    adminService.spAdminUpdateEvent(child.ID);
+                    eventService.spAdminUpdateEvent(child.ID);
                 });
             }
         }

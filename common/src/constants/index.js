@@ -7,3 +7,10 @@ exports.HTTP_CODE = {
     NOT_FOUND: 404,
     INTERNAL_ERROR: 500
 }
+
+exports.METHOD = {
+    GET: 'get',
+    POST: 'post',
+    PUT: 'put',
+    DELETE: 'delete'
+};

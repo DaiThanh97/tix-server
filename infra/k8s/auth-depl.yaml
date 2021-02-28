@@ -19,20 +19,23 @@ spec:
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:
-                  name: jwt-key
+                  name: tix-secret
                   key: JWT_KEY
             - name: JWT_EXPIRES
               valueFrom:
-                secretKeyRef:
-                  name: jwt-expires
+                configMapKeyRef:
+                  name: tix
                   key: JWT_EXPIRES
             - name: MYSQL_URL
               valueFrom:
                 secretKeyRef:
-                  name: mysql-url
+                  name: tix-secret
                   key: MYSQL_URL
             - name: DB_NAME
-              value: db_user
+              valueFrom:
+                configMapKeyRef:
+                  name: tix
+                  key: DB_USER
 ---
 apiVersion: v1
 kind: Service

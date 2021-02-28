@@ -19,17 +19,17 @@ spec:
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:
-                  name: jwt-key
+                  name: tix-secret
                   key: JWT_KEY
             - name: JWT_EXPIRES
               valueFrom:
-                secretKeyRef:
-                  name: jwt-expires
+                configMapKeyRef:
+                  name: tix
                   key: JWT_EXPIRES
             - name: MYSQL_URL
               valueFrom:
                 secretKeyRef:
-                  name: mysql-url
+                  name: tix-secret
                   key: MYSQL_URL
             - name: NATS_CLIENT_ID
               valueFrom:
@@ -38,12 +38,12 @@ spec:
             - name: S3_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
-                  name: s3-access-key
+                  name: tix-secret
                   key: S3_ACCESS_KEY
             - name: S3_SECRET_KEY
               valueFrom:
                 secretKeyRef:
-                  name: s3-secret-key
+                  name: tix-secret
                   key: S3_SECRET_KEY
             - name: S3_REGION
               valueFrom:
@@ -70,6 +70,16 @@ spec:
                 configMapKeyRef:
                   name: tix
                   key: DB_ADMIN
+            - name: ROUTE_PREFIX
+              valueFrom:
+                configMapKeyRef:
+                  name: tix
+                  key: ROUTE_PREFIX
+            - name: ROUTE_ADMIN
+              valueFrom:
+                configMapKeyRef:
+                  name: tix
+                  key: ROUTE_ADMIN
 ---
 apiVersion: v1
 kind: Service

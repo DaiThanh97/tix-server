@@ -19,7 +19,7 @@ exports.getMovies = asyncHandler(async (req, res, next) => {
     // Check response DB
     if (result[0]) {
         const data = Object.values(result[0]);
-        httpCode = HTTP_CODE.CREATED;
+        httpCode = HTTP_CODE.SUCCESS;
         response = new Response(`${API_ACTION.GET_ALL_MOVIES} successful`, data);
     }
     else {
